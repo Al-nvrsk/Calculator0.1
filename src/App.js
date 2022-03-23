@@ -4,7 +4,7 @@ import Calculator from './Components/Calculator';
 
 
 
-function App() {
+const App=()=> {
     return (
         <div className="App">
       <h1 className='header'>Callculator: "Hello World"</h1>

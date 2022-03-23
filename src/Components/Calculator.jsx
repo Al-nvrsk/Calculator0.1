@@ -4,36 +4,35 @@ import './style.css'
 
 function Calculator(){
 
-    let [currentNumber,setcurrentNumber]=useState('0')
-    let [topNumber,settopNumber]=useState('0')
+    let [currentNumber, setcurrentNumber] = useState('0')
+    let [topNumber, settopNumber] = useState('0')
    
-    function InputNumber(number){
-        if (currentNumber=='0'&&currentNumber.length==1){
+    function InputNumber(number) {
+        if (currentNumber == '0' && currentNumber.length == 1){
             return setcurrentNumber(number.toString())
         }
-        else { return setcurrentNumber(currentNumber+number)
+        else { return setcurrentNumber(currentNumber + number)
         }
     }
 
-    function Backspice(value){
-        if (value.length>1) {
-           return setcurrentNumber(value.split('').slice(0,value.length-1).join(''))
+    function Backspace(value){
+        if (value.length > 1) {
+           return setcurrentNumber(value.split('').slice(0, value.length-1).join(''))
         }
         if (value.length==1) {
             return setcurrentNumber('0')
         }
     }
 
-    function BackspiceMark(value){
+    function BackspaceMark(value){
             return (value.split('').slice(0, value.length-1).join(''))
         }
         
-    function AddPoint() {
-        if (currentNumber.indexOf('.')>=0) {
-            return currentNumber
+    const AddPoint  =  ( ) => {
+        ( currentNumber.indexOf('.') >=0)
+        ? currentNumber 
+        : setcurrentNumber(currentNumber + '.')
         }
-        else {return setcurrentNumber(currentNumber+'.')}
-    }
 
     function Converter(value){
         if (value.indexOf(".")>0) {
@@ -50,7 +49,7 @@ function Calculator(){
          else {
             if (topNumber.indexOf(character)>0) {return (settopNumber(Equal()+character), setcurrentNumber('0'))
             } 
-            else {return (settopNumber(BackspiceMark(topNumber)+character))}
+            else {return (settopNumber(BackspaceMark(topNumber)+character))}
             }
     }
     
@@ -104,7 +103,7 @@ function Calculator(){
                 <button onClick={()=>InputNumber(0)}>0</button>
                 <button onClick={()=>AddPoint()}>.</button>
                 <button className="span-two" onClick={()=>MainOperation('+')}>+</button>
-                <button className="span-two" onClick={()=>Backspice(currentNumber)}>&#129044;</button>
+                <button className="span-two" onClick={()=>Backspace(currentNumber)}>&#129044;</button>
                 <button className="span-two" onClick={()=>EqualButton()}>=</button>
 
        </div>)
